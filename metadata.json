@@ -1,0 +1,8 @@
+{
+  "name": "Groovy Horse Disco 3D",
+  "description": "A procedurally generated 3D disco experience controlled by hand gestures and reactive to audio beats.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
