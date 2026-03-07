@@ -1,3 +1,4 @@
+![Gameplay Demo](Demo_v0.0.0.gif)
 Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)
 
 Copyright (c) 2026 Yan Shu (舒龑) madjojoshuyan
