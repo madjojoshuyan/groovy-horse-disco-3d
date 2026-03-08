@@ -1,5 +1,4 @@
-![Gameplay Demo](Demo_v0.0.0.gif)
-
+!\[Gameplay Demo](Demo\_v0.0.0.gif)
 Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)
 
 Copyright (c) 2026 Yan Shu (舒龑) madjojoshuyan
@@ -16,46 +15,73 @@ The licensor cannot revoke these freedoms as long as you follow the license term
 === Under the following terms: ===
 
 * Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-
 * NonCommercial — You may NOT use the material for commercial purposes. This means you cannot sell this project, include it in a paid video game, use it in a monetized app, or use it to generate revenue in any way.
 
-=== No additional restrictions === 
+=== No additional restrictions ===
 You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
-------------------------------------------------------------------------
+---
+
 For the full, legally binding text of this license, please visit:
 https://creativecommons.org/licenses/by-nc/4.0/legalcode
 
 > Release date: 2026-03-08
 > Base version: v0.0.0
-> Files: 
+> Files（2026-03-08）: 
 >
 
-* .env.local
-* .gitignore
-* App.tsx
-* components
 
-  * Controls.tsx
-  * DiscoScene.tsx
 
-* index.css
-* index.html
-* index.tsx
-* metadata.json
-* package-lock.json
-* package.json
-* services
+├── index.html                 # Main HTML entry point.
 
-  * audioService.ts
-  * visionService.ts
+├── package.json               # Project metadata, scripts, and npm dependencies.
 
-* tsconfig.json
-* types.ts
-* vite.config.ts
+├── vite.config.ts             # Vite bundler configuration.
 
-> \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*Base Version Developer:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Yan Shu (舒龑)
-> \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*Last Updated By:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Yan Shu (舒龑)
+├── tsconfig.json              # TypeScript compiler configuration.
+
+├── setup-windows.bat          # Automated startup script for Windows.
+
+├── setup-mac.command          # Automated startup script for macOS/Linux.
+
+├── TECH\_DOC.md                # This technical documentation file.
+
+│
+
+├── src/                       # Source code directory (mapped to root in this flat structure)
+
+│   ├── index.tsx              # React application entry point. Mounts <App /> to the DOM.
+
+│   ├── index.css              # Global stylesheet containing Tailwind CSS imports.
+
+│   ├── App.tsx                # Root React component. Manages global state (audio, camera).
+
+│   ├── types.ts               # Global TypeScript interfaces and enums (e.g., Gesture enum).
+
+│   │
+
+│   ├── components/            # React UI and 3D Components
+
+│   │   ├── CameraFeed.tsx     # Handles the hidden <video> element for webcam capture.
+
+│   │   ├── Controls.tsx       # UI overlay (Start button, audio toggles, instructions).
+
+│   │   └── DiscoScene.tsx     # The core 3D environment. Contains all Three.js logic:
+
+│   │                          # - Procedural horse generation
+
+│   │                          # - Custom GLSL shaders for particles
+
+│   │                          # - Lighting, shadows, and animation loop
+
+│   │
+
+│   └── services/              # Singleton services for external APIs/Logic
+
+│       ├── audioService.ts    # Web Audio API wrapper. Handles beat detection and frequency analysis.
+
+│       └── visionService.ts   # MediaPipe wrapper. Processes video frames to detect hand gestures.> \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*Base Version Developer:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Yan Shu (舒龑)
+> \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*Last Updated By:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Yan Shu (舒龑)
 
 
 
