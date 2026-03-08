@@ -8,6 +8,7 @@ interface DiscoSceneProps {
   videoRef: React.RefObject<HTMLVideoElement>;
   isActive: boolean;
   onGestureDetected?: (gesture: Gesture) => void;
+  handCursorRef?: React.RefObject<HTMLDivElement>;
 }
 
 // Shader for glowing, blinking particles with lifecycle
@@ -87,7 +88,7 @@ function createSpriteTexture() {
     return texture;
 }
 
-export const DiscoScene: React.FC<DiscoSceneProps> = ({ videoRef, isActive, onGestureDetected }) => {
+export const DiscoScene: React.FC<DiscoSceneProps> = ({ videoRef, isActive, onGestureDetected, handCursorRef }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
@@ -552,13 +553,48 @@ export const DiscoScene: React.FC<DiscoSceneProps> = ({ videoRef, isActive, onGe
                  if (result) {
                      if (onGestureDetected) onGestureDetected(result.gesture);
                      currentGestureRef.current = result.gesture;
-                     // Smooth movement
-                     const targetX = (1 - result.x) * 10 - 5;
-                     const targetZ = result.y * 10 - 5;
+                     
+                     // Calibrate hand position: define an "active zone" in the camera frame
+                     // This prevents the user from having to reach the absolute edges of the camera
+                     let nx = (result.x - 0.15) / 0.7; // X active zone: 15% to 85%
+                     let ny = (result.y - 0.2) / 0.6;  // Y active zone: 20% to 80%
+                     
+                     // Clamp normalized coordinates to [0, 1]
+                     nx = Math.max(0, Math.min(1, nx));
+                     ny = Math.max(0, Math.min(1, ny));
+
+                     // Smooth movement for 3D character
+                     const targetX = (1 - nx) * 10 - 5;
+                     const targetZ = ny * 10 - 5;
                      targetPosRef.current.set(targetX, 0, targetZ);
+
+                     // Update HUD Hand Cursor
+                     if (handCursorRef?.current && isActive) {
+                         // Use CSS clamp to keep the 32x32 (16px radius) circle strictly inside the window bounds
+                         handCursorRef.current.style.left = `clamp(16px, ${(1 - nx) * 100}%, calc(100% - 16px))`;
+                         handCursorRef.current.style.top = `clamp(16px, ${ny * 100}%, calc(100% - 16px))`;
+                         handCursorRef.current.style.opacity = '1';
+                         
+                         // Match color to gesture
+                         let cursorColor = '#a855f7'; // Default purple
+                         if (result.gesture === Gesture.Closed_Fist) cursorColor = '#facc15'; // Yellow
+                         else if (result.gesture === Gesture.Open_Palm) cursorColor = '#4ade80'; // Green
+                         else if (result.gesture === Gesture.Victory) cursorColor = '#22d3ee'; // Cyan
+                         
+                         handCursorRef.current.style.borderColor = cursorColor;
+                         handCursorRef.current.style.boxShadow = `0 0 15px ${cursorColor}`;
+                         handCursorRef.current.style.backgroundColor = `${cursorColor}33`; // 20% opacity fill
+                     }
                  } else {
                      currentGestureRef.current = Gesture.None;
+                     if (handCursorRef?.current) {
+                         handCursorRef.current.style.opacity = '0';
+                     }
                  }
+            } else {
+                if (handCursorRef?.current) {
+                    handCursorRef.current.style.opacity = '0';
+                }
             }
 
             // Scene Logic based on Gesture
