@@ -1,4 +1,5 @@
-!\[Gameplay Demo](Demo\_v0.0.0.gif)
+![Gameplay Demo](Demo_v0.0.0.gif)
+
 Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)
 
 Copyright (c) 2026 Yan Shu (舒龑) madjojoshuyan
@@ -26,62 +27,19 @@ For the full, legally binding text of this license, please visit:
 https://creativecommons.org/licenses/by-nc/4.0/legalcode
 
 > Release date: 2026-03-08
+> 
 > Base version: v0.0.0
-> Files（2026-03-08）: 
->
+> 
+
+* Base Version Developer: Yan Shu (舒龑)
+* Last Updated By: Yan Shu (舒龑)
 
 
+|Files（2026-03-08）:|
+|-|
+|├── index.html                 # Main HTML entry point.<br />├── package.json               # Project metadata, scripts, and npm dependencies.<br />├── vite.config.ts             # Vite bundler configuration.<br />├── tsconfig.json              # TypeScript compiler configuration.<br />├── setup-windows.bat          # Automated startup script for Windows.<br />├── setup-mac.command          # Automated startup script for macOS/Linux.<br />├── TECH\_DOC.md                # This technical documentation file.<br />│<br />├── src/                       # Source code directory (mapped to root in this flat structure)<br />│   ├── index.tsx              # React application entry point. Mounts <App /> to the DOM.<br />│   ├── index.css              # Global stylesheet containing Tailwind CSS imports.<br />│   ├── App.tsx                # Root React component. Manages global state (audio, camera).<br />│   ├── types.ts               # Global TypeScript interfaces and enums (e.g., Gesture enum).<br />│   │<br />│   ├── components/            # React UI and 3D Components<br />│   │   ├── CameraFeed.tsx     # Handles the hidden <video> element for webcam capture.<br />│   │   ├── Controls.tsx       # UI overlay (Start button, audio toggles, instructions).<br />│   │   └── DiscoScene.tsx     # The core 3D environment. Contains all Three.js logic:<br />│   │                          # - Procedural horse generation<br />│   │                          # - Custom GLSL shaders for particles<br />│   │                          # - Lighting, shadows, and animation loop<br />│   │<br />│   └── services/              # Singleton services for external APIs/Logic<br />│       ├── audioService.ts    # Web Audio API wrapper. Handles beat detection and frequency analysis.<br />│       └── visionService.ts   # MediaPipe wrapper. Processes video frames to detect hand gestures.>|
 
-├── index.html                 # Main HTML entry point.
 
-├── package.json               # Project metadata, scripts, and npm dependencies.
-
-├── vite.config.ts             # Vite bundler configuration.
-
-├── tsconfig.json              # TypeScript compiler configuration.
-
-├── setup-windows.bat          # Automated startup script for Windows.
-
-├── setup-mac.command          # Automated startup script for macOS/Linux.
-
-├── TECH\_DOC.md                # This technical documentation file.
-
-│
-
-├── src/                       # Source code directory (mapped to root in this flat structure)
-
-│   ├── index.tsx              # React application entry point. Mounts <App /> to the DOM.
-
-│   ├── index.css              # Global stylesheet containing Tailwind CSS imports.
-
-│   ├── App.tsx                # Root React component. Manages global state (audio, camera).
-
-│   ├── types.ts               # Global TypeScript interfaces and enums (e.g., Gesture enum).
-
-│   │
-
-│   ├── components/            # React UI and 3D Components
-
-│   │   ├── CameraFeed.tsx     # Handles the hidden <video> element for webcam capture.
-
-│   │   ├── Controls.tsx       # UI overlay (Start button, audio toggles, instructions).
-
-│   │   └── DiscoScene.tsx     # The core 3D environment. Contains all Three.js logic:
-
-│   │                          # - Procedural horse generation
-
-│   │                          # - Custom GLSL shaders for particles
-
-│   │                          # - Lighting, shadows, and animation loop
-
-│   │
-
-│   └── services/              # Singleton services for external APIs/Logic
-
-│       ├── audioService.ts    # Web Audio API wrapper. Handles beat detection and frequency analysis.
-
-│       └── visionService.ts   # MediaPipe wrapper. Processes video frames to detect hand gestures.> \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*Base Version Developer:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Yan Shu (舒龑)
-> \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*Last Updated By:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Yan Shu (舒龑)
 
 
 
